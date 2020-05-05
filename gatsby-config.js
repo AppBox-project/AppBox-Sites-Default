@@ -1,10 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Appbox sample site`,
+    description: `This site has been powered by AppBox. `,
     author: `@gatsbyjs`,
+    color: `green`,
   },
   plugins: [
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://appbox.vicvan.co/api/publish-sample1-blog/read",
+        rootKey: "posts",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
