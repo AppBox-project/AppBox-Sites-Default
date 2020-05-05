@@ -1,39 +1,29 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import { AppBar, Typography, Button, Toolbar } from "@material-ui/core"
+import styles from "./header.module.css"
 
-const Header = ({ siteTitle, color }) => (
-  <header
-    style={{
-      background: color,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
+const Header = ({ siteTitle, color, menu }) => {
+  return (
+    <AppBar position="static" className={styles.root}>
+      <Toolbar>
+        <Link to="/" className={styles.headerTitle}>
+          <Typography variant="h6">{siteTitle}</Typography>
         </Link>
-      </h1>
-    </div>
-  </header>
-)
-
-Header.defaultProps = {
-  siteTitle: ``,
-  color: ``,
+        {menu.map(menuItem => {
+          return (
+            <Link
+              to={menuItem.to}
+              key={menuItem.to}
+              className={styles.headerButton}
+            >
+              {menuItem.label}
+            </Link>
+          )
+        })}
+      </Toolbar>
+    </AppBar>
+  )
 }
 
 export default Header

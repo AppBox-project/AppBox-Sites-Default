@@ -1,0 +1,15 @@
+.root {
+  margin-bottom: 1rem;
+}
+
+.headerTitle {
+  color: white;
+  flex: 1;
+  text-decoration: none;
+}
+
+.headerButton {
+  color: white !important;
+  text-decoration: none;
+  margin: 0 15px;
+}

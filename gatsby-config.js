@@ -3,7 +3,13 @@ module.exports = {
     title: `Appbox sample site`,
     description: `This site has been powered by AppBox. `,
     author: `@gatsbyjs`,
-    color: `green`,
+    color: `#f57832`,
+    menus: {
+      main: [
+        { label: "About me", to: "/about-me" },
+        { label: "Contact me", to: "/contact-me" },
+      ],
+    },
   },
   plugins: [
     {
@@ -11,6 +17,13 @@ module.exports = {
       options: {
         url: "https://appbox.vicvan.co/api/publish-sample1-blog/read",
         rootKey: "posts",
+      },
+    },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://appbox.vicvan.co/api/publish-sample1-pages/read",
+        rootKey: "pages",
       },
     },
     `gatsby-plugin-react-helmet`,
