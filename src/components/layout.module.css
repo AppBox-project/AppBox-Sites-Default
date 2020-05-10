@@ -6,3 +6,10 @@
   width: 100vw;
   text-align: center;
 }
+
+.heroImage {
+  width: 100vw;
+  height: 450px;
+  z-index: 1;
+  position: relative;
+}

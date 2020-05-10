@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Appbox sample site`,
+    title: `Appbox Sample Site`,
     description: `This site has been powered by AppBox. `,
     author: `@gatsbyjs`,
     color: `#f57832`,
@@ -24,16 +24,24 @@ module.exports = {
       options: {
         url: "https://appbox.vicvan.co/api/publish-sample1-pages/read",
         rootKey: "pages",
+        schemas: {
+          pages: `
+        _id: String
+        data: data
+        objectId: String
+        `,
+          data: `name: String
+        name: String
+        slug: String
+        title: String
+        image: image`,
+          image: `
+          url: String
+          `,
+        },
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

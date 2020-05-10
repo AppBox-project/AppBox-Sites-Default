@@ -4,7 +4,10 @@ import Layout from "../components/layout"
 
 const Page = ({ data }) => {
   return (
-    <Layout>
+    <Layout
+      title={data.pages.data.name}
+      hero={data.pages.data.image.local.childImageSharp.fluid}
+    >
       <h1>{data.pages.data.name}</h1>
       <div dangerouslySetInnerHTML={{ __html: data.pages.data.body }} />
     </Layout>
@@ -18,6 +21,15 @@ export const query = graphql`
         name
         slug
         body
+        image {
+          local {
+            childImageSharp {
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
   }

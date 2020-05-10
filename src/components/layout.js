@@ -11,8 +11,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import styles from "./layout.module.css"
+import Img from "gatsby-image"
+import SEO from "../components/seo"
+import { Typography } from "@material-ui/core"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, hero, title }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -32,11 +35,17 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      {hero ? (
+        <Img fluid={hero} className={styles.heroImage} />
+      ) : (
+        <div style={{ height: 80 }} />
+      )}
       <Header
         siteTitle={data.site.siteMetadata.title}
         color={data.site.siteMetadata.color}
         menu={data.site.siteMetadata.menus.main}
       />
+      <SEO title={title} />
       <div
         style={{
           margin: `0 auto`,
@@ -47,11 +56,17 @@ const Layout = ({ children }) => {
         <main>{children}</main>
       </div>
       <footer className={styles.footer}>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://appbox.vicvan.co" target="_blank">
-          VicBox
-        </a>
+        <Typography style={{ cursor: "default" }}>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a
+            href="https://appbox.vicvan.co"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            VicBox
+          </a>
+        </Typography>
       </footer>
     </>
   )
@@ -59,6 +74,8 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  hero: PropTypes.node.isRequired,
+  title: PropTypes.node.isRequired,
 }
 
 export default Layout
