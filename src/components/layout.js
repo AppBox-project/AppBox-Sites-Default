@@ -60,7 +60,7 @@ const Layout = ({ children, hero, title }) => {
           © {new Date().getFullYear()}, Built with
           {` `}
           <a
-            href="https://appbox.vicvan.co"
+            href="https://appbox.vicvancooten.nl"
             target="_blank"
             rel="noopener noreferrer"
           >

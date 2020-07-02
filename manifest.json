@@ -1,0 +1,9 @@
+{
+  "name": "Default theme",
+  "version": 0.1,
+  "author": "Vic van Cooten",
+  "siteSettings": [
+    { "key": "slogan", "label": "Slogan" },
+    { "key": "color", "label": "Color", "type": "color", "default": "#ff303f" }
+  ]
+}

@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Appbox Sample Site`,
     description: `This site has been powered by AppBox. `,
-    author: `@gatsbyjs`,
+    author: `@AppBox`,
     color: `#f57832`,
     menus: {
       main: [
@@ -15,14 +15,14 @@ module.exports = {
     {
       resolve: "gatsby-source-custom-api",
       options: {
-        url: "https://appbox.vicvan.co/api/publish-sample1-blog/read",
+        url: "https://appbox.vicvancooten.nl/api/publish-sample1-blog/read",
         rootKey: "posts",
       },
     },
     {
       resolve: "gatsby-source-custom-api",
       options: {
-        url: "https://appbox.vicvan.co/api/publish-sample1-pages/read",
+        url: "https://appbox.vicvancooten.nl/api/publish-sample1-pages/read",
         rootKey: "pages",
         schemas: {
           pages: `
