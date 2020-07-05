@@ -3,7 +3,11 @@
   "version": 0.1,
   "author": "Vic van Cooten",
   "siteSettings": [
+    { "key": "name", "label": "Name", "default": "Your new site" },
     { "key": "slogan", "label": "Slogan" },
+    { "key": "email", "label": "Contact email" },
+    { "key": "phone", "label": "Contact phone" },
     { "key": "color", "label": "Color", "type": "color", "default": "#ff303f" }
-  ],  "supportedMenus": [{ "id": "main", "subAllowed": true }]
+  ],
+  "supportedMenus": [{ "id": "main", "subAllowed": true }]
 }
