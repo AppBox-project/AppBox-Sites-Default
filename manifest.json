@@ -5,5 +5,5 @@
   "siteSettings": [
     { "key": "slogan", "label": "Slogan" },
     { "key": "color", "label": "Color", "type": "color", "default": "#ff303f" }
-  ]
+  ],  "supportedMenus": [{ "id": "main", "subAllowed": true }]
 }
