@@ -1,0 +1,43 @@
+.footer {
+  background-color: #efefef;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  text-align: center;
+}
+
+.heroImage {
+  width: 100vw;
+  height: 70vh;
+  z-index: 1;
+  position: relative;
+  background-color: red;
+}
+
+.container {
+  background-color: white;
+  transition: all 1s;
+  z-index: 2;
+  position: absolute;
+  top: 350px;
+  width: 95vw;
+  margin: 0 2.5vw;
+  min-height: calc(100vh - 350px);
+  padding: 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.pageTitle {
+  position: absolute;
+  top: 275px;
+  left: 3vw;
+  z-index: 3;
+  color: white;
+  cursor: default;
+  transition: all 0.3s;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+    0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+}

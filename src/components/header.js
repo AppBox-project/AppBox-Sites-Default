@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import { Typography } from "@material-ui/core"
-import styles from "./header.module.css"
+import styles from "./header.module.scss"
 
 const Header = ({ siteTitle, color, menu }) => {
   return (

@@ -1,21 +1,15 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
-import styles from "./layout.module.css"
+import styles from "./layout.module.scss"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
-import { Container } from "@material-ui/core"
+import { Typography, Container } from "@material-ui/core"
 
-const Layout = ({ children, hero, title }) => {
+const Layout = ({ children, hero, title, pageTitle }) => {
+  // Query
   const data = useStaticQuery(graphql`
     query SiteInformationQuery {
       site {
@@ -38,23 +32,21 @@ const Layout = ({ children, hero, title }) => {
     }
   `)
   const siteInfo = data.site.siteMetadata.site
-  console.log(hero)
 
+  // UI
   return (
     <>
-      {hero ? (
-        <Img fluid={hero} className={styles.heroImage} />
-      ) : (
-        <div style={{ height: 80 }} />
-      )}
+      {hero && <Img fluid={hero} className={styles.heroImage} />}
       <Header
         siteTitle={siteInfo.name}
         color={siteInfo.color}
         menu={data.site.siteMetadata.menus.main}
       />
       <SEO title={title} />
-
-      <Container style={{ marginTop: 64 }}>{children}</Container>
+      <Typography variant="h4" component="h1" className={styles.pageTitle}>
+        {pageTitle}
+      </Typography>
+      <div className={styles.container}>{children}</div>
     </>
   )
 }
@@ -63,6 +55,7 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   hero: PropTypes.node.isRequired,
   title: PropTypes.node.isRequired,
+  pageTitle: PropTypes.node.isRequired,
 }
 
 export default Layout
