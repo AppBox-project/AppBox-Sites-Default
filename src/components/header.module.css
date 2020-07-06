@@ -1,6 +1,6 @@
 .root {
   color: white;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   padding: 15px;
   height: 64px;
@@ -9,9 +9,6 @@
   position: absolute;
   top: 0;
   transition: background-color 0.3s;
-}
-.root:hover {
-  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .headerTitle {
@@ -24,6 +21,7 @@
 .headerTitle:hover {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
+  text-decoration: underline;
 }
 
 .headerButton {
@@ -36,5 +34,5 @@
 
 .headerButton:hover {
   color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
+  text-decoration: underline;
 }

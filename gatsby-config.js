@@ -1,46 +1,56 @@
+const map = require("lodash/map")
+
+// Require information from site
+const siteData = require("./siteData.json")
+
+// Create a map of required objects.
+const srces = []
+map(siteData.objects, (value, key) => {
+  // First create schema based on model
+  let schema = ``
+  const imageKeys = []
+  map(value, (value, key) => {
+    if (value.type === "picture") {
+      imageKeys.push(key)
+      schema += `
+      ${key}: image`
+    } else {
+      schema += `
+      ${key}: String`
+    }
+  })
+
+  // Then push schema to the config
+  srces.push({
+    resolve: "gatsby-source-custom-api",
+    options: {
+      url: `${siteData.baseUrl}/api/${key}/read`,
+      rootKey: key.replace("-", ""),
+      schemas: {
+        object: `
+          _id: String
+          data: data
+          objectId: String
+      `,
+        data: schema,
+        image: `
+          url: String
+        `,
+      },
+      imageKeys,
+    },
+  })
+})
+
+// Export configuration
 module.exports = {
   siteMetadata: {
-    title: `Appbox Sample Site`,
-    description: `This site has been powered by AppBox. `,
     author: `@AppBox`,
-    color: `#f57832`,
-    menus: {
-      main: [
-        { label: "About me", to: "/about-me" },
-        { label: "Contact me", to: "/contact-me" },
-      ],
-    },
+    site: siteData.data,
+    menus: siteData.menus,
   },
   plugins: [
-    {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        url: "https://appbox.vicvancooten.nl/api/publish-sample1-blog/read",
-        rootKey: "posts",
-      },
-    },
-    {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        url: "https://appbox.vicvancooten.nl/api/publish-sample1-pages/read",
-        rootKey: "pages",
-        schemas: {
-          pages: `
-        _id: String
-        data: data
-        objectId: String
-        `,
-          data: `name: String
-        name: String
-        slug: String
-        title: String
-        image: image`,
-          image: `
-          url: String
-          `,
-        },
-      },
-    },
+    ...srces,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

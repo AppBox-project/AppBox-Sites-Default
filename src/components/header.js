@@ -12,11 +12,11 @@ const Header = ({ siteTitle, color, menu }) => {
       {menu.map(menuItem => {
         return (
           <Link
-            to={menuItem.to}
+            to={`/${menuItem.to}`}
             key={menuItem.to}
             className={styles.headerButton}
           >
-            <Typography>{menuItem.label}</Typography>
+            <Typography>{menuItem.title}</Typography>
           </Link>
         )
       })}

@@ -2,27 +2,21 @@ const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const result = await graphql(`
-    {
-      allPages {
-        nodes {
-          data {
-            slug
-          }
-        }
-      }
-      allPosts {
-        nodes {
-          data {
-            slug
-          }
+  const result = await graphql(`{
+    allPublisherpages {
+      nodes {
+        data {
+          title
+          slug
+          body
         }
       }
     }
+  }  
   `)
   return Promise.all(
     // Pages
-    result.data.allPages.nodes.map(async node => {
+    result.data.allPublisherpages.nodes.map(async node => {
       console.log(`Making page ${node.data.slug}`)
       await createPage({
         path: node.data.slug,
@@ -32,17 +26,5 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }),
-
-    // Posts
-    result.data.allPosts.nodes.map(async node => {
-      console.log(`Making post ${node.data.slug}`)
-      await createPage({
-        path: `posts/${node.data.slug}`,
-        component: path.resolve("./src/pages/post.js"),
-        context: {
-          url: node.data.slug,
-        },
-      })
-    })
   )
 }

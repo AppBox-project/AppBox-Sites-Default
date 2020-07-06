@@ -3,29 +3,32 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
 const Page = ({ data }) => {
+  const page = data.publisherpages.data
+  const body = JSON.parse(page.body)
+
   return (
-    <Layout
-      title={data.pages.data.name}
-      hero={data.pages.data.image.local.childImageSharp.fluid}
-    >
-      <h1>{data.pages.data.name}</h1>
-      <div dangerouslySetInnerHTML={{ __html: data.pages.data.body }} />
+    <Layout title="Test" hero={page.image.local.childImageSharp.fluid}>
+      <h1>{page.title}</h1>
+      {body.layout.map(layoutItem => {
+        const block = body.blocks[layoutItem.id]
+        return <div dangerouslySetInnerHTML={{ __html: block.content }} />
+      })}
     </Layout>
   )
 }
 
 export const query = graphql`
   query($url: String) {
-    pages(data: { slug: { eq: $url } }) {
+    publisherpages(data: { slug: { eq: $url } }) {
       data {
-        name
+        title
         slug
         body
         image {
           local {
             childImageSharp {
               fluid(maxWidth: 2000) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }

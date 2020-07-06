@@ -13,18 +13,23 @@ import "./layout.css"
 import styles from "./layout.module.css"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
-import { Typography } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 
 const Layout = ({ children, hero, title }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query SiteInformationQuery {
       site {
         siteMetadata {
-          title
-          color
+          site {
+            name
+            email
+            phone
+            slogan
+          }
           menus {
             main {
-              label
+              title
+              page
               to
             }
           }
@@ -32,6 +37,8 @@ const Layout = ({ children, hero, title }) => {
       }
     }
   `)
+  const siteInfo = data.site.siteMetadata.site
+  console.log(hero)
 
   return (
     <>
@@ -41,33 +48,13 @@ const Layout = ({ children, hero, title }) => {
         <div style={{ height: 80 }} />
       )}
       <Header
-        siteTitle={data.site.siteMetadata.title}
-        color={data.site.siteMetadata.color}
+        siteTitle={siteInfo.name}
+        color={siteInfo.color}
         menu={data.site.siteMetadata.menus.main}
       />
       <SEO title={title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-      </div>
-      <footer className={styles.footer}>
-        <Typography style={{ cursor: "default" }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a
-            href="https://appbox.vicvancooten.nl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            VicBox
-          </a>
-        </Typography>
-      </footer>
+
+      <Container style={{ marginTop: 64 }}>{children}</Container>
     </>
   )
 }
