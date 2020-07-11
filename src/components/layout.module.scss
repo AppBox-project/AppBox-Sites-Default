@@ -17,7 +17,7 @@
 
 .container {
   background-color: white;
-  transition: all 1s;
+  transition: all 0.3s;
   z-index: 2;
   position: absolute;
   top: 350px;
@@ -25,14 +25,16 @@
   margin: 0 2.5vw;
   min-height: calc(100vh - 400px);
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 15px;
   box-sizing: border-box;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+    0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
 }
 
 .pageTitle {
   position: absolute;
   top: 275px;
-  left: 3vw;
   z-index: 3;
   color: white;
   cursor: default;
@@ -40,10 +42,13 @@
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
     0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
     0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+  width: 100vw;
+  text-align: center;
 }
 
 .footer {
   width: 100vw;
   background-color: #eee;
   height: 50px;
+  cursor: default;
 }

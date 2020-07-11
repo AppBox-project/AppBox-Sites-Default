@@ -6,7 +6,6 @@ import { Divider } from "@material-ui/core"
 const Page = ({ data }) => {
   const page = data.publisherpages.data
   const body = JSON.parse(page.body)
-
   return (
     <Layout
       title="Test"

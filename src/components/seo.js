@@ -9,14 +9,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 
-function SEO({ lang, meta }) {
+function SEO({ pageTitle, lang, meta, siteTitle }) {
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title="test"
-      titleTemplate={`%s | test`}
+      title={pageTitle}
+      titleTemplate={`%s | ${siteTitle}`}
       meta={[
         {
           name: `description`,
@@ -65,7 +65,8 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  pageTitle: PropTypes.string.isRequired,
+  siteTitle: PropTypes.string.isRequired,
 }
 
 export default SEO

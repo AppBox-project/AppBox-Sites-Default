@@ -42,12 +42,12 @@ const Layout = ({ children, hero, title, pageTitle }) => {
         color={siteInfo.color}
         menu={data.site.siteMetadata.menus.main}
       />
-      <SEO title={title} />
+      <SEO pageTitle={pageTitle} siteTitle={data.site.siteMetadata.site.name} />
       <Typography variant="h4" component="h1" className={styles.pageTitle}>
         {pageTitle}
       </Typography>
       <div className={styles.container}>{children}</div>
-      <div className={styles.footer}>Footer</div>
+      <Typography className={styles.footer}>{siteInfo.slogan}</Typography>
     </>
   )
 }
