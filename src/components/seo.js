@@ -8,30 +8,27 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
-
-
+function SEO({ lang, meta }) {
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title='test'
+      title="test"
       titleTemplate={`%s | test`}
       meta={[
         {
           name: `description`,
-          content: 'test',
+          content: "test",
         },
         {
           property: `og:title`,
-          content: 'test',
+          content: "test",
         },
         {
           property: `og:description`,
-          content: 'test',
+          content: "test",
         },
         {
           property: `og:type`,
@@ -43,15 +40,15 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: 'test',
+          content: "test",
         },
         {
           name: `twitter:title`,
-          content: 'test',
+          content: "test",
         },
         {
           name: `twitter:description`,
-          content: 'test',
+          content: "test",
         },
       ].concat(meta)}
     />

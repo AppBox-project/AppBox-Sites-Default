@@ -11,7 +11,7 @@ map(siteData.objects, (value, key) => {
   const imageKeys = []
   map(value, (value, key) => {
     if (value.type === "picture") {
-      imageKeys.push(key)
+      imageKeys.push(`data.${key}`)
       schema += `
       ${key}: image`
     } else {
@@ -37,7 +37,6 @@ map(siteData.objects, (value, key) => {
           url: String
         `,
       },
-      imageKeys,
     },
   })
 })

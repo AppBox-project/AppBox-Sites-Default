@@ -6,7 +6,7 @@ import "./layout.css"
 import styles from "./layout.module.scss"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
-import { Typography, Container } from "@material-ui/core"
+import { Typography } from "@material-ui/core"
 
 const Layout = ({ children, hero, title, pageTitle }) => {
   // Query

@@ -10,7 +10,7 @@ const Page = ({ data }) => {
   return (
     <Layout
       title="Test"
-      hero={page.image.local.childImageSharp.fluid}
+      hero={page.image.local?.childImageSharp?.fluid}
       pageTitle={page.title}
     >
       {body.layout.map((layoutItem, index) => {
