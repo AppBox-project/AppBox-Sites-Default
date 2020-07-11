@@ -24,7 +24,7 @@ ${key}: String`
   srces.push({
     resolve: "gatsby-source-custom-api",
     options: {
-      url: `${siteData.baseUrl}/api/${key}/read`,
+      url: `${siteData.baseUrl}/api/${key}/read?baseUrl=http://localhost:8600`,
       rootKey: key.replace("-", ""),
       schemas: {
         [key.replace("-", "")]: `
