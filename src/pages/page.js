@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Divider } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 
 const Page = ({ data }) => {
   const page = data.publisherpages.data
@@ -12,15 +12,24 @@ const Page = ({ data }) => {
       hero={page.image.local?.childImageSharp?.fluid}
       pageTitle={page.title}
     >
-      {body.layout.map((layoutItem, index) => {
-        const block = body.blocks[layoutItem.id]
-        return (
-          <>
-            <div dangerouslySetInnerHTML={{ __html: block.content }} />
-            {body.layout[index + 1] && <Divider style={{ marginBottom: 15 }} />}
-          </>
-        )
-      })}
+      <Grid container>
+        {body.layout.map((layoutItem, index) => {
+          const block = body.blocks[layoutItem.id]
+          return (
+            <Grid
+              item
+              xs={block.xs}
+              sm={block.sm}
+              md={block.md}
+              lg={block.lg}
+              xl={block.xl}
+              key={index}
+            >
+              <div dangerouslySetInnerHTML={{ __html: block.content }} />
+            </Grid>
+          )
+        })}
+      </Grid>
     </Layout>
   )
 }
