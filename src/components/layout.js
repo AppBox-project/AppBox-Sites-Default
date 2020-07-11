@@ -47,6 +47,7 @@ const Layout = ({ children, hero, title, pageTitle }) => {
         {pageTitle}
       </Typography>
       <div className={styles.container}>{children}</div>
+      <div className={styles.footer}>Footer</div>
     </>
   )
 }

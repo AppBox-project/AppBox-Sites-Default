@@ -11,12 +11,12 @@ map(siteData.objects, (value, key) => {
   const imageKeys = []
   map(value, (value, key) => {
     if (value.type === "picture") {
-      imageKeys.push(`data.${key}`)
+      imageKeys.push(key)
       schema += `
-      ${key}: image`
+${key}: image`
     } else {
       schema += `
-      ${key}: String`
+${key}: String`
     }
   })
 
@@ -27,7 +27,7 @@ map(siteData.objects, (value, key) => {
       url: `${siteData.baseUrl}/api/${key}/read`,
       rootKey: key.replace("-", ""),
       schemas: {
-        object: `
+        [key.replace("-", "")]: `
           _id: String
           data: data
           objectId: String
@@ -37,6 +37,7 @@ map(siteData.objects, (value, key) => {
           url: String
         `,
       },
+      imageKeys,
     },
   })
 })
