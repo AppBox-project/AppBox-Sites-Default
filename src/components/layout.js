@@ -8,7 +8,7 @@ import Img from "gatsby-image"
 import SEO from "../components/seo"
 import { Typography } from "@material-ui/core"
 
-const Layout = ({ children, hero, title, pageTitle }) => {
+const Layout = ({ children, hero, pageTitle }) => {
   // Query
   const data = useStaticQuery(graphql`
     query SiteInformationQuery {
@@ -55,7 +55,6 @@ const Layout = ({ children, hero, title, pageTitle }) => {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   hero: PropTypes.node.isRequired,
-  title: PropTypes.node.isRequired,
   pageTitle: PropTypes.node.isRequired,
 }
 

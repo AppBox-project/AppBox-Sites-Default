@@ -1,1 +1,65 @@
-{"data":{"name":"VicBox","slogan":"Demo site","email":"info@vicbox.nl","phone":"06123456"},"menus":{"main":[{"title":"About me","page":"5f09d0f698ec6401ace1c51a","to":"about-me"},{"title":"Contact me","page":"5f09d589954bca11360ad119","to":"contact"},{"title":"My blog","page":"5f09d599954bca11360ad11a","to":"blog"},{"title":"Portfolio","page":"5f09d5b0954bca11360ad11b","to":"portfolio"}]},"baseUrl":"https://appbox.vicvancooten.nl","objects":{"publisher-pages":{"title":{"name":"Title","required":true,"type":"input"},"slug":{"name":"Slug","required":true,"unique":true,"type":"input"},"image":{"name":"Image","type":"picture"},"body":{"name":"Body","type":"data"},"site":{"name":"Site","required":true,"type":"relationship","typeArgs":{"relationshipTo":"publish-sites"}}}}}
+{
+  "data": {
+    "name": "Vic van Cooten",
+    "slogan": "Sweet-ass site.",
+    "email": "duveaux1@gmail.com",
+    "phone": "0620212345"
+  },
+  "menus": {
+    "main": [
+      {
+        "title": "About me",
+        "page": "5f0a3b7dc3ae7c019abef01c",
+        "to": "about-me"
+      },
+      {
+        "title": "Contact",
+        "page": "5f0a3b88c3ae7c019abef01d",
+        "to": "contact"
+      },
+      {
+        "title": "Portfolio",
+        "page": "5f0a3b90c3ae7c019abef01e",
+        "to": "portfolio"
+      },
+      { "title": "My blog", "page": "5f0a3b97c3ae7c019abef01f", "to": "blog" }
+    ]
+  },
+  "baseUrl": "http://localhost:8600",
+  "objects": {
+    "publisher-pages": {
+      "title": { "name": "Title", "required": true, "type": "input" },
+      "slug": {
+        "name": "Slug",
+        "required": true,
+        "unique": true,
+        "type": "input"
+      },
+      "image": { "name": "Image", "type": "picture" },
+      "body": { "name": "Body", "type": "data" },
+      "site": {
+        "name": "Site",
+        "required": true,
+        "type": "relationship",
+        "typeArgs": { "relationshipTo": "publish-sites" }
+      }
+    },
+    "publisher-posts": {
+      "name": { "name": "Name", "required": true, "type": "input" },
+      "slug": {
+        "name": "Slug",
+        "required": true,
+        "unique": true,
+        "type": "input"
+      },
+      "image": { "name": "Image", "type": "picture" },
+      "post": { "name": "Post", "type": "richtext" },
+      "site": {
+        "name": "Site",
+        "type": "relationship",
+        "typeArgs": { "relationshipTo": "publish-sites" },
+        "required": true
+      }
+    }
+  }
+}
