@@ -2,10 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Grid } from "@material-ui/core"
+import DataGrid from "../SystemComponents/Data/Grid"
 
-const Page = ({ data }) => {
+const Page = ({ data, pageContext }) => {
   const page = data.publisherpages.data
   const body = JSON.parse(page.body)
+  console.log(pageContext)
   return (
     <Layout
       title="Test"
@@ -25,7 +27,10 @@ const Page = ({ data }) => {
               xl={block.xl}
               key={index}
             >
-              <div dangerouslySetInnerHTML={{ __html: block.content }} />
+              {(block.type === "html" || block.type === "text") && (
+                <div dangerouslySetInnerHTML={{ __html: block.content }} />
+              )}
+              {block.type === "data" && <DataGrid source={block.dataType} />}
             </Grid>
           )
         })}
