@@ -1,24 +1,32 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import styles from "./Grid.module.scss"
+import { Grid, Typography } from "@material-ui/core"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
 
-const DataGrid = ({ source }) => {
-  let newKey = source.replace("-", "")
-  newKey = newKey.charAt(0).toUpperCase() + newKey.slice(1)
-  const data = useStaticQuery(graphql`
-    query GetData {
-      allPublisherposts {
-        edges {
-          node {
-            data {
-              name
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  return <div>{source}</div>
+const DataGrid = ({ data }) => {
+  return (
+    <Grid container>
+      {data.map(i => {
+        const item = i.node
+        return (
+          <Grid item xs={3}>
+            <Link
+              to={`/${item.siteType}/${item.slug}`}
+              style={{ textDecoration: "none" }}
+            >
+              <div className={styles.item}>
+                <Img fixed={item.image.local.childImageSharp.fixed} />
+                <Typography className={styles.itemTitle}>
+                  {item.name}
+                </Typography>
+              </div>
+            </Link>
+          </Grid>
+        )
+      })}
+    </Grid>
+  )
 }
 
 export default DataGrid

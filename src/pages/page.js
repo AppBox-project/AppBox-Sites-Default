@@ -3,11 +3,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Grid } from "@material-ui/core"
 import DataGrid from "../SystemComponents/Data/Grid"
+import { filter } from "lodash"
 
 const Page = ({ data, pageContext }) => {
   const page = data.publisherpages.data
   const body = JSON.parse(page.body)
-  console.log(pageContext)
   return (
     <Layout
       title="Test"
@@ -30,7 +30,14 @@ const Page = ({ data, pageContext }) => {
               {(block.type === "html" || block.type === "text") && (
                 <div dangerouslySetInnerHTML={{ __html: block.content }} />
               )}
-              {block.type === "data" && <DataGrid source={block.dataType} />}
+              {block.type === "data" && (
+                <DataGrid
+                  data={filter(
+                    data.allData.edges,
+                    o => o.node.siteType === block.dataType
+                  )}
+                />
+              )}
             </Grid>
           )
         })}
@@ -40,7 +47,7 @@ const Page = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query($url: String) {
+  query($url: String, $dependencies: [String]) {
     publisherpages(data: { slug: { eq: $url } }) {
       data {
         title
@@ -51,6 +58,25 @@ export const query = graphql`
             childImageSharp {
               fluid(maxWidth: 2000) {
                 ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+    allData(filter: { siteType: { in: $dependencies } }) {
+      edges {
+        node {
+          siteType
+          name
+          content
+          slug
+          image {
+            local {
+              childImageSharp {
+                fixed(height: 250, width: 350) {
+                  ...GatsbyImageSharpFixed_withWebp
+                }
               }
             }
           }

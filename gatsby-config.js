@@ -25,8 +25,8 @@ ${key}: String`
     resolve: "gatsby-source-custom-api",
     options: {
       url: {
-        development: `${siteData.baseUrl}/api/${key}/read?baseUrl=base`, // on "gatsby develop"
-        production: `${siteData.baseUrl}/api/${key}/read?baseUrl=http://localhost:8600`, // on "gatsby build"
+        development: `${siteData.baseUrl}/api/${key}/read?baseUrl=base&addToEachObject=siteType:${key}`, // on "gatsby develop"
+        production: `${siteData.baseUrl}/api/${key}/read?baseUrl=http://localhost:8600&addToEachObject=siteType:${key}`, // on "gatsby build"
       },
       rootKey: key.replace("-", ""),
       schemas: {

@@ -7,7 +7,7 @@ const DataItem = ({ data }) => {
   return (
     <Layout
       hero={page.image.local?.childImageSharp?.fluid}
-      pageTitle={page.title}
+      pageTitle={page.name}
     >
       <div dangerouslySetInnerHTML={{ __html: page.content }} />
     </Layout>

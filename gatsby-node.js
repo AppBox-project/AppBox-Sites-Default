@@ -12,6 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
           title
           slug
           body
+          dependencies
         }
       }
     }
@@ -42,6 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
         component: path.resolve("./src/pages/page.js"),
         context: {
           url: node.data.slug,
+          dependencies: node.data.dependencies || [],
         },
       })
     }),
