@@ -10,7 +10,7 @@ const DataGrid = ({ data }) => {
       {data.map(i => {
         const item = i.node
         return (
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <Link
               to={`/${item.siteType}/${item.slug}`}
               style={{ textDecoration: "none" }}
